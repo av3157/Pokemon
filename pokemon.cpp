@@ -205,7 +205,7 @@ int main() {
         for (int i = 0; i < 3; i++) {
             cout << i + 1 << ". " << starters[i].name << "\n";
         }
-        cout << "Enter 1, 2, or 3.\n"; 
+        cout << "Enter 1, 2, or 3: "; 
         if (!(cin >> choice) || choice < 1 || choice > 3) {
             cin.clear();              
             cin.ignore(1000, '\n');   
