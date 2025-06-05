@@ -17,7 +17,6 @@ public:
     int hp; // current hp after battle
     int maxHp;
     vector<Move> moves;
-    bool isPlayer;
 
     Pokemon(string n, int h, vector<Move> m)
         : name(n), hp(h), maxHp(h), moves(m) {}
@@ -165,26 +164,23 @@ void displayGrid(int playerX, int playerY) {
     cout << "\n";
 }
 
-char getValidatedDirection() {
+void movePlayer(int &x, int &y) {
     string input;
+    char direction;
     while (true) {
         cout << "To move, type N, S, E, or W: ";
         cin >> input;
 
         if (input.length() == 1) {
-            char dir = toupper(input[0]);
-            if (dir == 'N' || dir == 'S' || dir == 'E' || dir == 'W') {
-                return dir;
+            direction = toupper(input[0]);
+            if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W') {
+                break;
             }
         }
         cout << "Invalid input. Please enter N, S, E, or W.\n";
     }
-}
 
-void movePlayer(int &x, int &y) {
-    cout << "You are at (" << x << ", " << y << ")\n";
-    char dir = getValidatedDirection();
-    switch (dir) {
+    switch (direction) {
         case 'N': if (y < 9) y++; else cout << "You can't move further north!\n"; break;
         case 'S': if (y > 0) y--; else cout << "You can't move further south!\n"; break;
         case 'E': if (x < 9) x++; else cout << "You can't move further east!\n"; break;
@@ -210,8 +206,8 @@ int main() {
         }
         cout << "Enter 1, 2, or 3.\n"; 
         if (!(cin >> choice) || choice < 1 || choice > 3) {
-            cin.clear();              // clear the error flag
-            cin.ignore(1000, '\n');   // discard invalid input
+            cin.clear();              
+            cin.ignore(1000, '\n');   
             cout << "Invalid input. Please enter 1, 2, or 3.\n";
             continue;
         }
@@ -241,6 +237,5 @@ int main() {
             battle(player, wild);
         }
     }
-
     return 0;
 }
