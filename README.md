@@ -1,0 +1,1 @@
+This is a simple version of the popular game "Pokemon" that I decided to create to put my C++ skills to the test. Players are allowed to chose one starter pokemon and battle their way through wild pokemon. Players may only heal their Pokemon if they land on a health potion square. If the player's pokemon faints, the game is over.
