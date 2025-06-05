@@ -168,23 +168,24 @@ void movePlayer(int &x, int &y) {
     string input;
     char direction;
     while (true) {
-        cout << "To move, type N, S, E, or W: ";
+        cout << "It's time to move around and battle wild Pokemon!\n"; 
+        cout << "To move, type U, D, L, or R: ";
         cin >> input;
 
         if (input.length() == 1) {
             direction = toupper(input[0]);
-            if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W') {
+            if (direction == 'U' || direction == 'D' || direction == 'L' || direction == 'R') {
                 break;
             }
         }
-        cout << "Invalid input. Please enter N, S, E, or W.\n";
+        cout << "Invalid input. Please enter U, D, L, or R.\n";
     }
 
     switch (direction) {
-        case 'N': if (y < 9) y++; else cout << "You can't move further north!\n"; break;
-        case 'S': if (y > 0) y--; else cout << "You can't move further south!\n"; break;
-        case 'E': if (x < 9) x++; else cout << "You can't move further east!\n"; break;
-        case 'W': if (x > 0) x--; else cout << "You can't move further west!\n"; break;
+        case 'U': if (y < 9) y++; else cout << "You can't move further up!\n"; break;
+        case 'D': if (y > 0) y--; else cout << "You can't move further down!\n"; break;
+        case 'L': if (x > 0) x--; else cout << "You can't move further left!\n"; break;
+        case 'R': if (x < 9) x++; else cout << "You can't move further right!\n"; break;
     }
 }
 
